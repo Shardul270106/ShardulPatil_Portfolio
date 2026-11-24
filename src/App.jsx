@@ -2,6 +2,7 @@ import { Component, useCallback, useEffect, useRef, useState } from 'react'
 import { Ascii } from 'ascii.rest/react'
 import * as gitGraph from 'ascii.rest/pieces/git-graph'
 import * as bootLog from 'ascii.rest/pieces/boot-log'
+import AvatarSceneEntry from './AvatarSceneEntry'
 import './App.css'
 
 const slowBootLog = {
@@ -721,10 +722,13 @@ function App() {
       </footer>
       </main>
       {introPhase === 'done' && (
-        <FloatingNav
-          theme={theme}
-          onToggleTheme={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
-        />
+        <>
+          <AvatarSceneEntry />
+          <FloatingNav
+            theme={theme}
+            onToggleTheme={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
+          />
+        </>
       )}
     </>
   )

@@ -770,6 +770,86 @@ main {
   line-height: 1.5;
 }
 
+.avatar-scene,
+.avatar-scene-entry {
+  position: fixed;
+  z-index: 48;
+  right: clamp(12px, 2vw, 30px);
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  width: clamp(120px, 10vw, 148px);
+  height: clamp(146px, 11vw, 164px);
+  pointer-events: none;
+}
+
+.avatar-scene__stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  appearance: none;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.avatar-scene__stage:focus-visible {
+  outline: none;
+}
+
+.avatar-scene__stage:focus-visible .avatar-scene__canvas {
+  filter: drop-shadow(0 0 7px #91d1b6);
+}
+
+.avatar-scene__stage--placeholder {
+  pointer-events: none;
+}
+
+.avatar-scene__announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.avatar-scene__canvas,
+.avatar-scene__fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-scene__canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-scene__fallback {
+  color: var(--color-chalk);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.avatar-scene__stage.has-fallback .avatar-scene__fallback {
+  opacity: 1;
+}
+
+.avatar-scene__stage.has-fallback .avatar-scene__canvas {
+  display: none;
+}
+
 .site-footer {
   display: flex;
   align-items: center;
@@ -834,6 +914,14 @@ main {
   .text-section__body p {
     font-size: 18px;
   }
+
+  .avatar-scene,
+  .avatar-scene-entry {
+    right: 12px;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    width: 112px;
+    height: 138px;
+  }
 }
 
 @media (max-width: 430px) {
@@ -894,6 +982,14 @@ main {
   .floating-nav__theme svg {
     width: 16px;
     height: 16px;
+  }
+
+  .avatar-scene,
+  .avatar-scene-entry {
+    right: 8px;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    width: 96px;
+    height: 118px;
   }
 
   .project__meta {
